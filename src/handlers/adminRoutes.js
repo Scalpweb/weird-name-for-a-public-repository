@@ -74,7 +74,7 @@ router.get("/best-clients", async (req, res) => {
   }
 
   const results = await sequelize.query(
-    `SELECT SUM(Jobs.price) as TotalPayed, Client.profession
+    `SELECT SUM(Jobs.price) as TotalPayed, Client.firstname, Client.lastname
       FROM Jobs
       LEFT JOIN Contracts ON Contracts.id = Jobs.ContractId
       LEFT JOIN Profiles AS Client ON Client.id = Contracts.ClientId
