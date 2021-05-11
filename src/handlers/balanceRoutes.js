@@ -4,7 +4,6 @@ router.post("/deposit/:userId", async (req, res) => {
   const { Profile, Job, Contract } = req.app.get("models");
   const { userId } = req.params;
 
-  console.log(req.body);
   if (!req.body.amount) {
     return res
       .status(401)
@@ -40,7 +39,7 @@ router.post("/deposit/:userId", async (req, res) => {
     },
   });
 
-  if (totalJobToPay * 0.25 > req.body.amount) {
+  if (totalJobToPay * 0.25 < req.body.amount) {
     return res
       .status(401)
       .json({

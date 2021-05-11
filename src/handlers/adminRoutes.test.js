@@ -5,6 +5,8 @@ const { sequelize } = require("../model");
 const { getProfile } = require("../middleware/getProfile");
 const adminHandlers = require("./adminRoutes");
 
+sequelize.options.logging = false;
+
 const app = express();
 
 app.use(bodyParser.json());
